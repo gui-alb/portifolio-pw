@@ -62,7 +62,7 @@ class Formacao(models.Model):
 
 class TFC(models.Model):
     titulo = models.CharField(max_length=100)
-    descricao = models.CharField(max_length=250)
+    descricao = models.TextField()
     rating = models.IntegerField()
     autores = models.CharField(max_length=200)
     orientadores = models.CharField(max_length=200)
