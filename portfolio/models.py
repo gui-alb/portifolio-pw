@@ -69,6 +69,8 @@ class TFC(models.Model):
     tecnologias = models.CharField(max_length=200)
     areas = models.CharField(max_length=200)
     pdf = models.FileField(upload_to='tfcs/')
+    imagem = models.ImageField(upload_to='tfcs/')
+    keyWords = models.CharField(max_length=200)
 
 
     def __str__(self):

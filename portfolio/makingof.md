@@ -87,6 +87,8 @@
 - Tecnologias
 - Areas
 - Pdf
+- Imagem
+- KeyWords
 
 --- 
 
