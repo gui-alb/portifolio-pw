@@ -26,7 +26,7 @@ class Tecnologia(models.Model):
     areas = models.CharField(max_length=100)
     descricao = models.CharField(max_length=250)
 
-    unidade_curriculares = models.ManyToManyField(UC, related_name='tecnologias_usadas', null=True)
+    unidade_curriculares = models.ManyToManyField(UC, related_name='tecnologias_usadas')
 
     def __str__(self):
         return self.nome
@@ -69,8 +69,8 @@ class TFC(models.Model):
     tecnologias = models.CharField(max_length=200)
     areas = models.CharField(max_length=200)
     pdf = models.FileField(upload_to='tfcs/')
-    imagem = models.ImageField(upload_to='tfcs/')
-    keyWords = models.CharField(max_length=200)
+    imagem = models.ImageField(upload_to='tfcs/', null=True, blank=True)
+    keyWords = models.CharField(max_length=200, null=True, blank=True)
 
 
     def __str__(self):
