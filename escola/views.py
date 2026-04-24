@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from .models import Curso, Aluno, Professor
+from django.shortcuts import render, get_object_or_404
+from .models import *
 
 
 def cursos_view(request):
@@ -25,3 +25,7 @@ def alunos_view(request):
                    .all())
 
     return render(request, 'escola/alunos.html', {'alunos': alunos})
+
+def curso_view(request, id):
+    curso = (Curso.objects.get(id=id))
+    return render(request, 'escola/curso.html', {'curso': curso})
