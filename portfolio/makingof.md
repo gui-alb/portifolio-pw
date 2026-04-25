@@ -92,6 +92,12 @@
 
 --- 
 
-# Modelo ER
+## Modelo ER
 
 ![Foto do modelo](/media/modelação.png)
+
+---
+
+# Lab 7
+
+*Fora pedido que fizemos para cada modelo do nosso portfolio uma view, um template e a respectiva url.*
