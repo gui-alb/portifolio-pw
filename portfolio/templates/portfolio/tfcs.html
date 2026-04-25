@@ -1,0 +1,15 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+<h2>TFCS - Lusófona</h2>
+
+<section>
+    {% for tfc in tfcs %}
+    <article>
+        <header>
+            <h3>{{ tfc }}</h3>
+        </header>
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}

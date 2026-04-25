@@ -1,0 +1,33 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+<h2>Projetos</h2>
+
+<section>
+    {% for projeto in projetos %}
+    <article>
+        <header>
+            <h3>{{ projeto }}</h3>
+        </header>
+
+        <section>
+            <h4>Tecnologias usadas</h4>
+            <ul>
+                {% for tecnologia in projeto.tecnologias.all %}
+                    {{ tecnologia }}
+               {% endfor %}
+            </ul>
+        </section>
+
+        <section>
+            <h4>Competencias adquiridas</h4>
+            <ul>
+                {% for competencia in projeto.competencias.all %}
+                    {{ competencia }}
+               {% endfor %}
+            </ul>
+        </section>
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}

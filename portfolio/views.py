@@ -10,7 +10,7 @@ def competencias_view(request):
               .prefetch_related()
               .all())
 
-    return render(request, '', {'competencias': competencias})
+    return render(request, 'portfolio/competencias.html', {'competencias': competencias})
 
 
 def contribuicoesOpenSource_view(request):
@@ -19,7 +19,7 @@ def contribuicoesOpenSource_view(request):
                     .prefetch_related()
                     .all())
 
-    return render(request, '', {'contribuicoes': contribuicoes})
+    return render(request, 'portfolio/contribuicoes.html', {'contribuicoes': contribuicoes})
 
 
 def formacoes_view(request):
@@ -28,7 +28,7 @@ def formacoes_view(request):
                     .prefetch_related()
                     .all())
 
-    return render(request, '', {'formacoes': formacoes})
+    return render(request, 'portfolio/formacoes.html', {'formacoes': formacoes})
 
 
 def licenciaturas_view(request):
@@ -37,7 +37,7 @@ def licenciaturas_view(request):
                     .prefetch_related()
                     .all())
 
-    return render(request, '', {'licenciaturas': licenciaturas})
+    return render(request, 'portfolio/licenciaturas.html', {'licenciaturas': licenciaturas})
 
 
 def projetos_view(request):
@@ -46,7 +46,7 @@ def projetos_view(request):
                     .prefetch_related()
                     .all())
 
-    return render(request, '', {'projetos': projetos})
+    return render(request, 'portfolio/projetos.html', {'projetos': projetos})
 
 
 def tecnologias_view(request):
@@ -55,7 +55,7 @@ def tecnologias_view(request):
                     .prefetch_related()
                     .all())
 
-    return render(request, '', {'tecnologias': tecnologias})
+    return render(request, 'portfolio/tecnologia.html', {'tecnologias': tecnologias})
 
 
 def tfcs_view(request):
@@ -64,7 +64,7 @@ def tfcs_view(request):
                     .prefetch_related()
                     .all())
 
-    return render(request, '', {'tfcs': tfcs})
+    return render(request, 'portfolio/tfcs.html', {'tfcs': tfcs})
 
 
 def unidadeCurricular_view(request):
@@ -73,4 +73,4 @@ def unidadeCurricular_view(request):
                     .prefetch_related()
                     .all())
 
-    return render(request, '', {'ucs': ucs})
+    return render(request, 'portfolio/unidadesCurriculares.html', {'ucs': ucs})

@@ -1,0 +1,33 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+<h2>Tecnologias</h2>
+
+<section>
+    {% for tecnologia in tecnologias %}
+    <article>
+        <header>
+            <h3>{{ tecnologia }}</h3>
+        </header>
+
+        <section>
+            <h4>Projetos</h4>
+            <ul>
+                {% for projeto in tecnologia.projetos.all %}
+                    {{ projeto }}
+               {% endfor %}
+            </ul>
+        </section>
+
+        <section>
+            <h4>Contribuições em Open-Source</h4>
+            <ul>
+                {% for contrib in tecnologia.contribuicoes.all %}
+                    {{ contrib }}
+               {% endfor %}
+            </ul>
+        </section>
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}

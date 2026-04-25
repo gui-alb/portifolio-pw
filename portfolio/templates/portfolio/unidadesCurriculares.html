@@ -1,0 +1,33 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+<h2>Unidades Curriculares</h2>
+
+<section>
+    {% for uc in ucs %}
+    <article>
+        <header>
+            <h3>{{ uc }}</h3>
+        </header>
+
+        <section>
+            <h4>Tecnologias usadas</h4>
+            <ul>
+                {% for tecnologia in uc.tecnologias.all %}
+                    {{ tecnologia }}
+               {% endfor %}
+            </ul>
+        </section>
+
+        <section>
+            <h4>Projetos Realizados</h4>
+            <ul>
+                {% for projeto in uc.projeto.all %}
+                    {{ projeto }}
+               {% endfor %}
+            </ul>
+        </section>
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}
