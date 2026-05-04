@@ -29,7 +29,10 @@
         </section>
 
         <a href="{% url 'editar_projeto' projeto.id  %}">Editar</a>
+        <a href="{% url 'apagar_prajeto' projeto.id %}">Apagar Projeto</a>
     </article>
     {% endfor %}
+
+<a href={% url 'novo_projeto' %}>+ Novo Projeto</a>
 </section>
 {% endblock %}

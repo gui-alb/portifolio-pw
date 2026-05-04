@@ -79,7 +79,11 @@ def unidadeCurricular_view(request):
 
 def novo_projeto_view(request):
 
-    form = ProjetoForm()
+    form = ProjetoForm(request.POST)
+
+    if form.is_valid():
+        form.save()
+        return redirect('projetos')
 
     context = {'form': form}
     return render(request, 'portfolio/novo_projeto.html', context)
@@ -99,6 +103,15 @@ def editar_projeto_view(request, id):
     context = {'form': form, 'projeto': projeto}
 
     return render(request, 'portfolio/edita_projeto.html', context)
+
+def apagar_projeto(request, id):
+    projeto = Projeto.objects.get(id=id)
+
+    if request.method == 'POST':
+        projeto.delete()
+        return redirect('projetos')
+
+    return render(request, 'portfolio/delete_projeto.html', {'projeto': projeto})
 def nova_tecnologia_view(request):
 
     form = TecnologiaForm()

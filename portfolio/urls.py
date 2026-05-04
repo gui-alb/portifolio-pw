@@ -14,6 +14,7 @@ urlpatterns = [
     path('ucs/', views.unidadeCurricular_view, name='ucs'),
     path('projetos/novo', views.novo_projeto_view, name="novo_projeto"),
     path('projetos/editar/<int:id>', views.editar_projeto_view, name="editar_projeto"),
+    path('projetos/apagar/<int:id>', views.apagar_projeto, name="apagar_prajeto"),
     path('tecnologias/novo', views.nova_tecnologia_view, name="nova_tecnologia"),
     path('competencias/novo', views.nova_competencia_view, name="nova_competencia"),
     path('formacoes/novo', views.nova_formacao_view, name="nova_formacao"),
