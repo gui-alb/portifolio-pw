@@ -1,3 +1,5 @@
+# Making Off
+
 # Entidades
 
 ----
@@ -114,5 +116,9 @@ Após inserir os dados que considerei relevantes passei a criação dos formulá
 
 > Fora pedido que criassemos formularios para criar, editar e apagar os modelos <u>Projeto</u>, <u>Tecnologia</u>, <u>Competencia</u> e <u>Formação</u>.
 
+## Sobre a aplicação
 
+Fora pedido ainda que fizemos uma página com alguns esclarecimentos sobre a arquitetura de projetos em django.
+
+Comecei por já fazer em Markdown pois estou habituado a usar para escrever e vi que o próximo tópico era usar o *Markdownify* para estilizar.
 

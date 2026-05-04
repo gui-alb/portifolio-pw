@@ -3,6 +3,8 @@ from django.shortcuts import render
 from portfolio.models import Competencia, ContribuicaoOpenSource, Formacao, Licenciatura, Projeto, Tecnologia, TFC, UC
 
 from .forms import *
+import os
+from django.conf import settings
 # Create your views here.
 def competencias_view(request):
     competencias = (Competencia.objects
@@ -102,3 +104,23 @@ def nova_formacao_view(request):
 
     context = {'form': form}
     return render(request, 'portfolio/nova_formacao.html', context)
+
+def landing_page_view(request):
+
+    path = os.path.join(settings.BASE_DIR, 'portfolio', 'static', 'md')
+
+    ficheiros = ['sobre.md', 'makingof.md']
+    conteudos = {}
+
+    for f in ficheiros:
+        caminho = os.path.join(path, f)
+        try:
+            with open(caminho, 'r', encoding='utf-8') as file:
+                conteudos[f] = file.read()
+        except FileNotFoundError:
+            conteudos[f] = None
+
+    return render(request, 'portfolio/sobre.html', {
+        'sobre_md': conteudos.get('sobre.md'),
+        'makingof_md': conteudos.get('makingof.md'),
+    })

@@ -40,8 +40,13 @@ INSTALLED_APPS = [
     'portfolio',
     'escola',
     'markdownify.apps.MarkdownifyConfig',
+    'django_extensions'
 ]
 
+GRAPH_MODELS = {
+    'all_aplications': True,
+    'group_models': True,
+}
 
 MARKDOWNIFY = {
    "default": {

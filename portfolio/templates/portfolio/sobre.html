@@ -1,0 +1,13 @@
+{% extends "portfolio/base.html" %}
+{% load markdownify %}
+
+{% block content %}
+
+    <div>
+        {{ sobre_md | markdownify }}
+    </div>
+
+    <div>
+        {{ makingof_md | markdownify }}
+    </div>
+{% endblock %}
