@@ -184,11 +184,38 @@ def apagar_competencia_view(request, id):
 
     return render(request, 'portfolio/delete_competencia.html', {'competencia': competencia})
 def nova_formacao_view(request):
+    form = FormacaoForm(request.POST)
 
-    form = FormacaoForm()
+    if form.is_valid():
+        form.save()
+        return redirect('formacoes')
 
     context = {'form': form}
     return render(request, 'portfolio/nova_formacao.html', context)
+
+
+def editar_formacao_view(request, id):
+    formacao = Formacao.objects.get(id=id)
+
+    if request.POST:
+        form = FormacaoForm(request.POST or None, instance=formacao)
+
+        if form.is_valid():
+            form.save()
+            return redirect('formacoes')
+    else:
+        form = FormacaoForm(instance=formacao)
+
+    return render(request, 'portfolio/edita_formacao.html', {'form': form, 'formacao': formacao})
+
+def apagar_formacao_view(request, id):
+    formacao = Formacao.objects.get(id=id)
+
+    if request.POST:
+        formacao.delete()
+        return redirect('formacoes')
+
+    return render(request, 'portfolio/delete_formacao.html', {'formacao': formacao})
 
 def landing_page_view(request):
 

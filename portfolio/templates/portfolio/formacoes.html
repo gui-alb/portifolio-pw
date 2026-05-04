@@ -18,7 +18,10 @@
                {% endfor %}
             </ul>
         </section>
+        <a href="{% url 'editar_formacao' formacao.id %}">Editar</a>
+        <a href="{% url 'apagar_formacao' formacao.id %}">Apagar</a>
     </article>
     {% endfor %}
+    <a href="{% url 'nova_formacao' %}">Adicionar formacao</a>
 </section>
 {% endblock %}
