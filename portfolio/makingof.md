@@ -101,3 +101,18 @@
 # Lab 7
 
 *Fora pedido que fizemos para cada modelo do nosso portfolio uma view, um template e a respectiva url.*
+
+---
+
+# Lab 8
+
+Ainda não havia inserido dados nenhum a minha base de dados (a nível do portfolio), exceto os tfcs que foram pedidos. Então aproveitei para inserir dados agora.
+
+Após inserir os dados que considerei relevantes passei a criação dos formulários.
+
+## Formulários
+
+> Fora pedido que criassemos formularios para criar, editar e apagar os modelos <u>Projeto</u>, <u>Tecnologia</u>, <u>Competencia</u> e <u>Formação</u>.
+
+
+
