@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from portfolio.models import Competencia, ContribuicaoOpenSource, Formacao, Licenciatura, Projeto, Tecnologia, TFC, UC
 
-
+from .forms import *
 # Create your views here.
 def competencias_view(request):
     competencias = (Competencia.objects
@@ -74,3 +74,31 @@ def unidadeCurricular_view(request):
                     .all())
 
     return render(request, 'portfolio/unidadesCurriculares.html', {'ucs': ucs})
+
+def novo_projeto_view(request):
+
+    form = ProjetoForm()
+
+    context = {'form': form}
+    return render(request, 'portfolio/novo_projeto.html', context)
+
+def nova_tecnologia_view(request):
+
+    form = TecnologiaForm()
+
+    context = {'form': form}
+    return render(request, 'portfolio/nova_tecnologia.html', context)
+
+def nova_competencia_view(request):
+
+    form = CompetenciaForm()
+
+    context = {'form': form}
+    return render(request, 'portfolio/nova_competencia.html', context)
+
+def nova_formacao_view(request):
+
+    form = FormacaoForm()
+
+    context = {'form': form}
+    return render(request, 'portfolio/nova_formacao.html', context)

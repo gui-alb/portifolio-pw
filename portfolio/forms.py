@@ -4,7 +4,7 @@ from .models import *
 class ProjetoForm(forms.ModelForm):
     class Meta:
         model = Projeto
-        field = '__all__'
+        fields = '__all__'
 
 class TecnologiaForm(forms.ModelForm):
     class Meta:

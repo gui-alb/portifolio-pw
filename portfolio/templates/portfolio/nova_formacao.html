@@ -1,0 +1,15 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+    <h3>Nova Formação</h3>
+    
+    <form action="" method="post" >
+      {% csrf_token %}   <!-- obrigatório nos forms Django -->
+      <table>
+          {{ form }}   <!-- insere input para cada atributo da classe Autor, numa tabela -->
+      </table>
+      <input type="submit" value="Criar formação">
+
+    </form>      
+
+{% endblock %}
