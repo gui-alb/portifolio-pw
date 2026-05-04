@@ -149,15 +149,40 @@ def apagar_tecnologia_view(request, id):
 
     return render(request, 'portfolio/delete_tecnologia.html', {'tecnologia': tecnologia})
 
-
-
 def nova_competencia_view(request):
 
-    form = CompetenciaForm()
+    form = CompetenciaForm(request.POST)
+
+    if form.is_valid():
+        form.save()
+        return redirect('competencias')
 
     context = {'form': form}
     return render(request, 'portfolio/nova_competencia.html', context)
 
+
+def editar_competencia_view(request, id):
+    competencia = Competencia.objects.get(id=id)
+
+    if request.POST:
+        form = CompetenciaForm(request.POST or None, instance=competencia)
+
+        if form.is_valid():
+            form.save()
+            return redirect('competencias')
+    else:
+        form = CompetenciaForm(instance=competencia)
+
+    return render(request, 'portfolio/edita_competencia.html', {'form': form, 'competencia': competencia})
+
+def apagar_competencia_view(request, id):
+    competencia = Competencia.objects.get(id=id)
+
+    if request.POST:
+        competencia.delete()
+        return redirect('competencias')
+
+    return render(request, 'portfolio/delete_competencia.html', {'competencia': competencia})
 def nova_formacao_view(request):
 
     form = FormacaoForm()

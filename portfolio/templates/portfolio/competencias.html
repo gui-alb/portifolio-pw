@@ -8,8 +8,11 @@
     <article>
         <header>
             <h3>{{ competencia }}</h3>
+            <a href="{% url 'editar_competencia' competencia.id %}">Editar</a>
+            <a href="{% url 'apagar_competencia' competencia.id %}">Apagar</a>
         </header>
     </article>
     {% endfor %}
+    <a href="{% url 'nova_competencia' %}">Adicionar competencia</a>
 </section>
 {% endblock %}
