@@ -27,7 +27,12 @@
                {% endfor %}
             </ul>
         </section>
+
+        <a href="{% url 'editar_tecnologia' tecnologia.id %}">Editar Tecnologia</a>
+        <a href="{% url 'apagar_tecnologia' tecnologia.id %}">Apagar Tecnologia</a>
     </article>
     {% endfor %}
+
+    <a href="{% url 'nova_tecnologia' %}">Adicionar Tecnologia</a>
 </section>
 {% endblock %}

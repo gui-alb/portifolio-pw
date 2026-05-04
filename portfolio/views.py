@@ -112,12 +112,44 @@ def apagar_projeto(request, id):
         return redirect('projetos')
 
     return render(request, 'portfolio/delete_projeto.html', {'projeto': projeto})
+
 def nova_tecnologia_view(request):
 
-    form = TecnologiaForm()
+    form = TecnologiaForm(request.POST)
+
+    if form.is_valid():
+        form.save()
+        return redirect('tecnologias')
 
     context = {'form': form}
     return render(request, 'portfolio/nova_tecnologia.html', context)
+
+def editar_tecnologia_view(request, id):
+    tecnologia = Tecnologia.objects.get(id=id)
+
+    if request.POST:
+        form = TecnologiaForm(request.POST or None, instance=tecnologia)
+
+        if form.is_valid():
+            form.save()
+            return redirect('tecnologias')
+    else:
+        form = TecnologiaForm(instance=tecnologia)
+
+    context = {'form': form, 'projeto': tecnologia}
+
+    return render(request, 'portfolio/edita_tecnologia.html', context)
+
+def apagar_tecnologia_view(request, id):
+    tecnologia = Tecnologia.objects.get(id=id)
+
+    if request.method == 'POST':
+        tecnologia.delete()
+        return redirect('tecnologias')
+
+    return render(request, 'portfolio/delete_tecnologia.html', {'tecnologia': tecnologia})
+
+
 
 def nova_competencia_view(request):
 
