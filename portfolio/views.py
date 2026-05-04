@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from portfolio.models import Competencia, ContribuicaoOpenSource, Formacao, Licenciatura, Projeto, Tecnologia, TFC, UC
 
@@ -84,6 +84,21 @@ def novo_projeto_view(request):
     context = {'form': form}
     return render(request, 'portfolio/novo_projeto.html', context)
 
+def editar_projeto_view(request, id):
+    projeto = Projeto.objects.get(id=id)
+
+    if request.POST:
+        form = ProjetoForm(request.POST or None, instance=projeto)
+
+        if form.is_valid():
+            form.save()
+            return redirect('projetos')
+    else:
+        form = ProjetoForm(instance=projeto)
+
+    context = {'form': form, 'projeto': projeto}
+
+    return render(request, 'portfolio/edita_projeto.html', context)
 def nova_tecnologia_view(request):
 
     form = TecnologiaForm()
