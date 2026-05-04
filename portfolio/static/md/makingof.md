@@ -122,3 +122,7 @@ Fora pedido ainda que fizemos uma página com alguns esclarecimentos sobre a arq
 
 Comecei por já fazer em Markdown pois estou habituado a usar para escrever e vi que o próximo tópico era usar o *Markdownify* para estilizar.
 
+Depois de escrever o <u>sobre.md</u> implementei ainda a view e url respectiva.
+
+Fiz dessa página a landing page do projeto.
+
