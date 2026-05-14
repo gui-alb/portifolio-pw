@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_URL = 'login'
 
 # Application definition
 
@@ -40,7 +41,8 @@ INSTALLED_APPS = [
     'portfolio',
     'escola',
     'markdownify.apps.MarkdownifyConfig',
-    'django_extensions'
+    'django_extensions',
+    'accounts',
 ]
 
 GRAPH_MODELS = {

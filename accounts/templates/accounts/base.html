@@ -20,16 +20,6 @@
             <a href="{% url 'formacoes' %}">Formações</a>
             <a href="{% url 'tecnologias' %}">Tecnologias</a>
             <a href="{% url 'tfcs' %}">TFCS</a>
-
-            {% if request.user.is_authenticated %}
-                <p>Olá, {{ request.user.username }}</p>
-
-                <a href="{% url 'logout' %}" style="padding: 10px">Logout</a>
-            {% else %}
-                <br>
-                <p><a href="{% url 'login' %}">Login</a>|       <a href="{% url 'registo'%}">Resgistar</a></p>
-
-            {% endif %}
         </nav>
     </header>
 
