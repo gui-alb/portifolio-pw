@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'portfolio',
     'escola',
+    'artigos',
     'markdownify.apps.MarkdownifyConfig',
     'django_extensions',
     'accounts',

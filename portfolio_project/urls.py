@@ -14,6 +14,7 @@ import accounts
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("escola/", include("escola.urls")),
+    path("artigos/", include("artigos.urls")),
     path("", include("portfolio.urls")),
     path("", include("accounts.urls"))
 ]

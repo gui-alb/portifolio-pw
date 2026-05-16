@@ -1,0 +1,62 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+    <article class="artigo-completo">
+        <h2>{{ artigo.titulo }}</h2>
+        <p><small>Por {{ artigo.autor.username }} em {{ artigo.data_criacao|date:"d/m/Y H:i" }}</small></p>
+
+        {% if artigo.fotografia %}
+            <img src="{{ artigo.fotografia.url }}" alt="{{ artigo.titulo }}" style="max-width: 100%; margin: 20px 0;">
+        {% endif %}
+
+        <div class="artigo-texto" style="line-height: 1.6; margin-bottom: 20px;">
+            {{ artigo.texto|linebreaks }}
+        </div>
+
+        {% if artigo.link_externo %}
+            <p><a href="{{ artigo.link_externo }}" target="_blank" class="btn">Ler mais no site original</a></p>
+        {% endif %}
+
+        <div class="artigo-acoes" style="margin: 30px 0; padding: 10px; border-top: 1px solid #eee; border-bottom: 1px solid #eee;">
+            <a href="{% url 'like_artigo' artigo.id %}" style="text-decoration: none; font-size: 1.2em;">
+                {% if request.user in artigo.likes.all %}
+                    ❤️
+                {% else %}
+                    🤍
+                {% endif %}
+                {{ artigo.total_likes }} Likes
+            </a>
+            
+            {% if request.user == artigo.autor %}
+                | <a href="{% url 'edita_artigo' artigo.id %}">Editar este artigo</a>
+            {% endif %}
+        </div>
+
+        <section class="comentarios">
+            <h3>Comentários ({{ comentarios.count }})</h3>
+            
+            {% if request.user.is_authenticated %}
+                <form method="post" style="margin-bottom: 30px;">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn">Publicar Comentário</button>
+                </form>
+            {% else %}
+                <p><a href="{% url 'login' %}">Faça login</a> para deixar um comentário.</p>
+            {% endif %}
+
+            <div class="lista-comentarios">
+                {% for comentario in comentarios %}
+                    <div class="comentario" style="background: #f9f9f9; padding: 10px; margin-bottom: 10px; border-radius: 5px;">
+                        <p><strong>{{ comentario.autor.username }}</strong> <small style="color: #666;">em {{ comentario.data_criacao|date:"d/m/Y H:i" }}</small></p>
+                        <p>{{ comentario.texto|linebreaks }}</p>
+                    </div>
+                {% empty %}
+                    <p>Ninguém comentou ainda. Seja o primeiro!</p>
+                {% endfor %}
+            </div>
+        </section>
+        
+        <p style="margin-top: 20px;"><a href="{% url 'lista_artigos' %}">← Voltar para a lista</a></p>
+    </article>
+{% endblock %}
