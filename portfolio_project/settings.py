@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 import environ
 import os
 
@@ -30,6 +33,8 @@ SECRET_KEY = 'django-insecure-*_f=y+8p!^ot=kq-j&(itfua7$z0pvbk=0!5%^c3w2p_nwp@lv
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+
 
 DATABASES = {
     "default": env.db("DATABASE_URL")
@@ -54,7 +59,24 @@ INSTALLED_APPS = [
     'markdownify.apps.MarkdownifyConfig',
     'django_extensions',
     'accounts',
+    'cloudinary',
+    'cloudinary_storage',
 ]
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': env('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': env('CLOUDINARY_API_KEY'),
+    'API_SECRET': env('CLOUDINARY_API_SECRET')
+}
+
+STORAGES = {
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 GRAPH_MODELS = {
     'all_aplications': True,
@@ -87,6 +109,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'portfolio_project.urls'
@@ -152,8 +175,5 @@ STATIC_URL = 'static/'
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-import os
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
